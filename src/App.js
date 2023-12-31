@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getAllPokemon, getPokemon } from "./utils/pokemon"
-import { Card } from "./components/Card/Card"
+import Card from "./components/Card/Card"
+import Navbar from "./components/Navbar/Navbar"
 import './App.css';
 
 function App() {
@@ -35,17 +36,20 @@ function App() {
   console.log(pokemonData);
 
   return (
-    <div className="App">
-      {loading ? (
-        <h1>ロード中・・・</h1>
-      ):
-        <div className="pokemonCardContainer">
-          {pokemonData.map((pokemon, i) => {
-            return <Card key={i} pokemon={pokemon} />
-          })}
-        </div>  
-      }
-    </div>
+    <>
+      <Navbar />
+      <div className="App">
+        {loading ? (
+          <h1>ロード中・・・</h1>
+        ):
+          <div className="pokemonCardContainer">
+            {pokemonData.map((pokemon, i) => {
+              return <Card key={i} pokemon={pokemon} />
+            })}
+          </div>  
+        }
+      </div>
+    </>
   );
 }
 
